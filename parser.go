@@ -99,7 +99,9 @@ func (ctx *parseCtx) nextProperty() (string, string, Parameters, error) {
 		}
 		ctx.next()
 		// Remove first space
-		val += l[1:]
+		if len(l) > 1 {
+		  val += l[1:]
+		}
 	}
 
 	// name may contain parameters
@@ -110,7 +112,9 @@ func (ctx *parseCtx) nextProperty() (string, string, Parameters, error) {
 			continue
 		}
 		ppair := strings.SplitN(v, "=", 2)
-		params.Add(ppair[0], ppair[1])
+		if len(ppair) > 1 {
+		  params.Add(ppair[0], ppair[1])
+		}
 	}
 
 	return paramslist[0], strings.Replace(val, "\\", "", -1), params, nil
