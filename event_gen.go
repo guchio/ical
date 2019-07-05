@@ -61,7 +61,7 @@ func (v *Event) AddProperty(key, value string, options ...PropertyOption) error 
 	}
 
 	switch key = strings.ToLower(key); key {
-	case "class", "created", "description", "dtstamp", "dtstart", "dtend", "duration", "geo", "last-modified", "location", "organizer", "priority", "sequence", "status", "summary", "transp", "uid", "url", "recurrence-id":
+	case "class", "created", "description", "dtstamp", "dtstart", "dtend", "duration", "geo", "last-modified", "location", "organizer", "priority", "sequence", "status", "summary", "transp", "uid", "url", "recurrence-id", "rrule":
 		v.props.Set(NewProperty(key, value, params))
 	default:
 		if strings.HasPrefix(key, "x-") || force {
